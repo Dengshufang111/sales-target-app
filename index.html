@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>销售目标填报系统</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 登录页面 -->
+        <div id="loginPage" class="page">
+            <div class="card">
+                <div class="header">
+                    <h1>🎯 销售目标填报系统</h1>
+                    <p>请输入您的销售ID登录</p>
+                </div>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="salesId">销售ID</label>
+                        <input 
+                            type="text" 
+                            id="salesId" 
+                            placeholder="请输入您的销售ID（如：S001）"
+                            required
+                            autocomplete="off"
+                        >
+                        <small class="hint">提示：可使用 S001、S002、S003 等测试</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="salesName">姓名</label>
+                        <input 
+                            type="text" 
+                            id="salesName" 
+                            placeholder="请输入您的姓名"
+                            required
+                        >
+                    </div>
+                    <button type="submit" class="btn btn-primary">登录</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- 主页面 -->
+        <div id="mainPage" class="page hidden">
+            <div class="header-bar">
+                <h1>🎯 销售目标填报</h1>
+                <div class="user-info">
+                    <span id="currentUser">欢迎，销售</span>
+                    <button id="logoutBtn" class="btn btn-small">退出</button>
+                </div>
+            </div>
+
+            <div class="content">
+                <!-- 目标填报表单 -->
+                <div class="card">
+                    <h2>填写本月目标</h2>
+                    <form id="targetForm">
+                        <div class="form-group">
+                            <label for="gtvTarget">
+                                GTV 目标（万元）
+                                <span class="tooltip" title="Gross Transaction Value，总交易额">ℹ️</span>
+                            </label>
+                            <input 
+                                type="number" 
+                                id="gtvTarget" 
+                                placeholder="请输入 GTV 目标金额"
+                                min="0"
+                                step="0.01"
+                                required
+                            >
+                        </div>
+                        <div class="form-group">
+                            <label for="revenueTarget">
+                                财收目标（万元）
+                                <span class="tooltip" title="财务收入目标">ℹ️</span>
+                            </label>
+                            <input 
+                                type="number" 
+                                id="revenueTarget" 
+                                placeholder="请输入财收目标金额"
+                                min="0"
+                                step="0.01"
+                                required
+                            >
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">提交目标</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- 已填报目标展示 -->
+                <div class="card">
+                    <h2>我的目标记录</h2>
+                    <div id="targetList" class="target-list">
+                        <p class="empty">暂无填报记录</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 提示消息 -->
+    <div id="toast" class="toast hidden"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
